@@ -8,7 +8,9 @@ cmake_c_std = '99'
 cmake_base_options = {
   'CMAKE_POLICY_VERSION_MINIMUM': '3.10',
   'CMAKE_OSX_SYSROOT': '/nonexistent',
+  'CMAKE_C_STANDARD': cmake_c_std,
   'CMAKE_OBJC_STANDARD': cmake_c_std,
+  'CMAKE_C_BYTE_ORDER': host_machine.endian() == 'big' ? 'BIG_ENDIAN' : 'LITTLE_ENDIAN',
   'CMAKE_OBJC_BYTE_ORDER': host_machine.endian() == 'big' ? 'BIG_ENDIAN' : 'LITTLE_ENDIAN',
   'CMAKE_BUILD_TYPE': 'Custom',
 }
