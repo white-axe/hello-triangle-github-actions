@@ -1,6 +1,6 @@
 # hello-triangle-github-actions
 
-Example GitHub Actions workflows demonstrating how to set up drivers for Direct3D 11, OpenGL, Metal and Vulkan:
+This repository contains example GitHub Actions workflows demonstrating usage of Direct3D 11, OpenGL, Metal and Vulkan in the GitHub-hosted GitHub Actions runners. This can be a bit challenging due to the fact that the Linux and Windows runners don't have a graphics card. For these example workflows, the graphics APIs are all backed by software renderers, except for Metal which is backed by an actual graphics card:
 
 | | **Linux** | **macOS** | **Windows** |
 |-|-|-|-|
