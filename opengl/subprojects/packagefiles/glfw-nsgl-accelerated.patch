@@ -1,0 +1,13 @@
+# Allows GLFW to use software-rendered OpenGL on macOS instead of erroring out if there is no hardware OpenGL support.
+
+--- a/src/nsgl_context.m
++++ b/src/nsgl_context.m
+@@ -199,7 +199,7 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
+     NSOpenGLPixelFormatAttribute attribs[40];
+     int index = 0;
+ 
+-    ADD_ATTRIB(NSOpenGLPFAAccelerated);
++
+     ADD_ATTRIB(NSOpenGLPFAClosestPolicy);
+ 
+     if (ctxconfig->nsgl.offline)

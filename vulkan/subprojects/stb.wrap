@@ -1,0 +1,6 @@
+[wrap-file]
+source_url = https://github.com/nothings/stb/archive/a7d4c2175630e1ea5b6f8dd00ab96fed0b97b96d.tar.gz
+source_filename = stb-a7d4c2175630e1ea5b6f8dd00ab96fed0b97b96d.tar.gz
+source_hash = ae498e10fadeba0c2e7aa86c71cc9989c4d895201cd26b8b72061c76cfde4edf
+directory = stb-a7d4c2175630e1ea5b6f8dd00ab96fed0b97b96d
+patch_directory = stb

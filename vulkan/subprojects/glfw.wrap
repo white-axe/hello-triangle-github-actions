@@ -1,0 +1,6 @@
+[wrap-file]
+source_url = https://github.com/glfw/glfw/releases/download/3.5.1/glfw-3.5.1.zip
+source_filename = glfw-3.5.1.zip
+source_hash = ea79bc5feffc254c87291980c2d0bce9acebb68c4983b79f961dcd2cb8a611a0
+directory = glfw-3.5.1
+method = cmake

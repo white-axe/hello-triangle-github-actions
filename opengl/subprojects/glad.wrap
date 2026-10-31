@@ -1,0 +1,6 @@
+[wrap-file]
+source_url = https://github.com/premake-libs/glad/archive/f18eda6f552409d96eddaa967a9704919bf66b86.tar.gz
+source_filename = glad-f18eda6f552409d96eddaa967a9704919bf66b86.tar.gz
+source_hash = aa63a2ca9a08e5a1371f4017c1c7e4aee365ac585001c447bd88bde5c6a173a7
+directory = glad-f18eda6f552409d96eddaa967a9704919bf66b86
+patch_directory = glad
