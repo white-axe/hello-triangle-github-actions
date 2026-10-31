@@ -145,19 +145,19 @@ static ID3DBlob *compile_shader(const char *target, const char *filename, const 
 
 static void init_shaders(void) {
     vs_blob = compile_shader("vs_5_0", "shader.vs.hlsl", (
-        "struct VS_INPUT {\n"
+        "struct Attributes {\n"
         "    float2 a_position: POSITION;\n"
         "    float3 a_color: COLOR0;\n"
         "};\n"
-        "struct VS_OUTPUT {\n"
+        "struct Varying {\n"
         "    float4 o_position: SV_Position;\n"
         "    float3 v_color: COLOR0;\n"
         "};\n"
-        "VS_OUTPUT main(VS_INPUT input) {\n"
-        "    VS_OUTPUT output;\n"
-        "    output.o_position = float4(input.a_position, 0., 1.);\n"
-        "    output.v_color = input.a_color;\n"
-        "    return output;\n"
+        "Varying main(Attributes attributes) {\n"
+        "    Varying varying;\n"
+        "    varying.o_position = float4(attributes.a_position, 0., 1.);\n"
+        "    varying.v_color = attributes.a_color;\n"
+        "    return varying;\n"
         "}\n"
     ));
     if (device->lpVtbl->CreateVertexShader(device, vs_blob->lpVtbl->GetBufferPointer(vs_blob), vs_blob->lpVtbl->GetBufferSize(vs_blob), NULL, &vs)) {
@@ -166,16 +166,16 @@ static void init_shaders(void) {
     device_context->lpVtbl->VSSetShader(device_context, vs, NULL, 0);
 
     ps_blob = compile_shader("ps_5_0", "shader.ps.hlsl", (
-        "struct PS_INPUT {\n"
+        "struct Varying {\n"
         "    float4 o_position: SV_Position;\n"
         "    float3 v_color: COLOR0;\n"
         "};\n"
-        "struct PS_OUTPUT {\n"
+        "struct Output {\n"
         "    float4 o_color: SV_Target0;\n"
         "};\n"
-        "PS_OUTPUT main(PS_INPUT input) {\n"
-        "    PS_OUTPUT output;\n"
-        "    output.o_color = float4(input.v_color.bgr, 1.); // need to swizzle the color channels since we're rendering to an image with BGRA pixel format instead of RGBA\n"
+        "Output main(Varying varying) {\n"
+        "    Output output;\n"
+        "    output.o_color = float4(varying.v_color.bgr, 1.); // need to swizzle the color channels since we're rendering to an image with BGRA pixel format instead of RGBA\n"
         "    return output;\n"
         "}\n"
     ));
