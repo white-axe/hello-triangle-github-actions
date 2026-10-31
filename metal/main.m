@@ -64,7 +64,7 @@ static void init_device(void) {
     if (device == nil) {
         fatal_error("Failed to get Metal device");
     }
-    printf("Device: %s\n", [[device name] UTF8String]);
+    printf("Device name: %s\n", [[device name] UTF8String]);
 
 }
 
