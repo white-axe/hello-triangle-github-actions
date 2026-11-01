@@ -134,7 +134,7 @@ static void init_program(void) {
     ));
 
     GLuint shaders[] = {vert, frag, 0};
-    GLuint program = link_shader_program(shaders);
+    program = link_shader_program(shaders);
 
     glDeleteShader(frag);
     frag = 0;
