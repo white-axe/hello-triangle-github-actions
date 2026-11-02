@@ -83,9 +83,11 @@ static GLuint compile_shader(GLenum shader_type, const char *shader_source_code)
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
         char *log = malloc(log_length);
         if (log == NULL) {
+            glDeleteShader(shader);
             fatal_error("Failed to allocate shader log");
         } else {
             glGetShaderInfoLog(shader, log_length, NULL, log);
+            glDeleteShader(shader);
             fatal_error(log);
         }
     }
@@ -106,9 +108,11 @@ static GLuint link_shader_program(GLuint *shaders) {
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &log_length);
         char *log = malloc(log_length);
         if (log == NULL) {
+            glDeleteProgram(program);
             fatal_error("Failed to allocate shader program log");
         } else {
             glGetProgramInfoLog(program, log_length, NULL, log);
+            glDeleteProgram(program);
             fatal_error(log);
         }
     }
