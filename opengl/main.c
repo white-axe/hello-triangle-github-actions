@@ -119,7 +119,7 @@ static GLuint link_shader_program(GLuint *shaders) {
     return program;
 }
 
-static void init_program(void) {
+static void init_shaders(void) {
     vert = compile_shader(GL_VERTEX_SHADER, (
         "attribute vec2 a_position;\n"
         "attribute vec3 a_color;\n"
@@ -129,14 +129,15 @@ static void init_program(void) {
         "    v_color = a_color;\n"
         "}\n"
     ));
-
     frag = compile_shader(GL_FRAGMENT_SHADER, (
         "varying vec3 v_color;\n"
         "void main() {\n"
         "    gl_FragColor = vec4(v_color, 1.);\n"
         "}\n"
     ));
+}
 
+static void init_program(void) {
     GLuint shaders[] = {vert, frag, 0};
     program = link_shader_program(shaders);
 
@@ -193,6 +194,7 @@ int main(void) {
     }
     init_window();
     init_gl();
+    init_shaders();
     init_program();
     init_vertex_buffer();
     draw_frame();

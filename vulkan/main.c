@@ -475,9 +475,12 @@ static VkShaderModule create_shader_module(const void *shader_bytecode, size_t s
     return shader_module;
 }
 
-static void init_pipeline(void) {
+static void init_shaders(void) {
     shader_modules[0] = create_shader_module(shader_vert_spv, shader_vert_spv_len);
     shader_modules[1] = create_shader_module(shader_frag_spv, shader_frag_spv_len);
+}
+
+static void init_pipeline(void) {
     const VkPipelineShaderStageCreateInfo pipeline_shader_stage_create_infos[sizeof shader_modules / sizeof *shader_modules] = {
         {
             .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
@@ -1196,6 +1199,7 @@ int main(int argc, char **argv) {
     init_swapchain();
     init_image_views();
     init_render_pass();
+    init_shaders();
     init_pipeline();
     init_framebuffers();
     init_command_pool();
